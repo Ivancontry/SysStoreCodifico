@@ -7,11 +7,6 @@ namespace SysStore.Domain.Base
         
     }
 
-    public abstract class Entity<T> : BaseEntity, IEntity<T>
-    { 
-        public virtual T Id { get; set; }
-        public string Status { get; set; }
-    }
     public enum StatusObject
     {
         Inactive = 0,

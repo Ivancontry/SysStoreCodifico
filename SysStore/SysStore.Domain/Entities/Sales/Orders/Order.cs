@@ -6,7 +6,7 @@ using SysStore.Domain.Entities.Sales.Customers;
 
 namespace SysStore.Domain.Entities.Sales.Orders
 {
-    public class Order : Entity<long>
+    public class Order : BaseEntity
     {
         public int OrderId { get; set; }
         public int CustId { get; set; }

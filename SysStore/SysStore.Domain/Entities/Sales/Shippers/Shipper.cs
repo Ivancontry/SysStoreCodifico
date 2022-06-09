@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SysStore.Domain.Entities.Sales.Shippers
 {
-    public class Shipper : Entity<int>
+    public class Shipper : BaseEntity
     {
         public int ShipperId { get; set; }
         public string CompanyName { get; set; }

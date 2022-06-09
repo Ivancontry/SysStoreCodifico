@@ -2,7 +2,7 @@
 using SysStore.Domain.Base;
 namespace SysStore.Domain.Entities.Sales.Customers
 {
-    public class Customer: Entity<long>
+    public class Customer: BaseEntity
     {
      
         public long CustId { get; set; }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SysStore.Domain.Entities.Employees
 {
-    public class Employe : Entity<int>
+    public class Employe : BaseEntity
     {
         public int EmplId { get; set; }
         public string LastName { get; set; }
