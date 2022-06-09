@@ -1,10 +1,12 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component,  ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {FormControl} from "@angular/forms";
 import {debounceTime, distinctUntilChanged, filter} from "rxjs/operators";
-import {CustomerSalesPrediction, CustomersService} from "./customers.service";
+import {CustomerSalesPrediction, OrdersService} from "./services/orders.service";
+import { MatDialog } from '@angular/material/dialog';
+import {ViewOrdersComponent} from "./view-orders/view-orders.component";
 
 @Component({
     selector: 'app-customers',
@@ -19,7 +21,7 @@ export class CustomersComponent implements AfterViewInit {
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor(private customersService: CustomersService) {
+    constructor(private customersService: OrdersService,private matDialog:MatDialog) {
         this.applyFilter("");
     }
 
@@ -43,5 +45,15 @@ export class CustomersComponent implements AfterViewInit {
             })
     }
 
+    viewOrders(customer: CustomerSalesPrediction) {
+        this.matDialog.open(ViewOrdersComponent, {
+            panelClass: ['modal-component'],
+            width: '70%',
+            height: 'auto',
+            data: {
+                customer: customer
+            }
+        });
+    }
 }
 

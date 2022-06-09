@@ -12,11 +12,16 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {CustomersService} from "./customers.service";
+import {ViewOrdersComponent} from './view-orders/view-orders.component';
+import {OrdersService} from "./services/orders.service";
+import {CustomersService} from "./services/customers.service";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatDividerModule} from "@angular/material/divider";
 
 
 @NgModule({
-    declarations: [CustomersComponent],
+    declarations: [CustomersComponent, ViewOrdersComponent],
     imports: [
         CommonModule,
         HttpClientModule,
@@ -28,10 +33,12 @@ import {CustomersService} from "./customers.service";
         MatSortModule,
         MatIconModule,
         MatButtonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatDialogModule,
+        MatDividerModule,
     ],
-    providers: [CustomersService],
-    entryComponents: [CustomersComponent]
+    providers: [OrdersService, CustomersService]
 })
 export class CustomersModule {
 }
