@@ -11,8 +11,9 @@ namespace SysStore.Infrastructure.Data.Base
         private IDbContext _dbContext;
 
         private ICategoryRepository _categorysRepository;
-        private IClientRepository _clientsRepository;
-        private IInvoiceMasterRepository _invoicesRepository;
+        private ICustomerRepository _customerRepository;
+        private IOrderRepository _orderRepository;
+        private IEmployeRepository _employeRepository;
 
         public UnitOfWork(IDbContext dbContext)
         {
@@ -23,11 +24,11 @@ namespace SysStore.Infrastructure.Data.Base
             return new GenericRepository<T>(_dbContext);
         }
 
-        public IInvoiceMasterRepository InvoicesMasterRepository
+        public IOrderRepository OrdersRepository
         {
             get
             {
-                return _invoicesRepository ??= new OrderRepository(_dbContext);
+                return _orderRepository ??= new OrderRepository(_dbContext);
             }
         }
         public ICategoryRepository CategorysRepository
@@ -38,13 +39,22 @@ namespace SysStore.Infrastructure.Data.Base
             }
         }
 
-        public IClientRepository ClientsRepository
+        public ICustomerRepository CustomerRepository
         {
             get
             {
-                return _clientsRepository ??= new CustomerRepository(_dbContext);
+                return _customerRepository ??= new CustomerRepository(_dbContext);
             }
         }
+
+        public IEmployeRepository EmployeesRepository
+        {
+            get
+            {
+                return _employeRepository ??= new EmployeRepository(_dbContext);
+            }
+        }   
+
         public Task<int> CommitAsync()
         {
             return _dbContext.SaveChangesAsync();

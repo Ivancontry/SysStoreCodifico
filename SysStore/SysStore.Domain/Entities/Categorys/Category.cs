@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using SysStore.Domain.Base;
 namespace SysStore.Domain.Entities.Categorys
 {
-    public class Category: Entity<long>
+    public class Category: BaseEntity
     {        
         public long Categoryid { get; set; }
         public string CategoryName { get; set; }
