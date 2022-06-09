@@ -11,19 +11,19 @@ namespace SysStore.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OrdersController : Controller
+    public class CustomersController : Controller
     {
         private readonly IMediator _mediator;
 
-        public OrdersController(IMediator mediator)
+        public CustomersController(IMediator mediator)
         {
             _mediator = mediator;
         }
-        
-        [HttpGet]
-        public async Task<IActionResult> GetAsync([FromQuery] GetOrdersForCustomerIdRequest request)
-        {
-            var response = await _mediator.Send(request);
+
+        [HttpGet("{custId:int}/orders")]
+        public async Task<IActionResult> GetAsync(int custId)
+        {            
+            var response = await _mediator.Send(new GetOrdersForCustomerIdRequest { CustId = custId});
             return Ok(response);
         }
 
