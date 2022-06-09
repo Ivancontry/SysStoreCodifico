@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { CustomersRoutingModule } from './customers-routing.module';
-import { CustomersComponent } from './customers.component';
+import {CustomersRoutingModule} from './customers-routing.module';
+import {CustomersComponent} from './customers.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -11,12 +11,15 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {CustomersService} from "./customers.service";
 
 
 @NgModule({
-  declarations: [CustomersComponent],
+    declarations: [CustomersComponent],
     imports: [
         CommonModule,
+        HttpClientModule,
         CustomersRoutingModule,
         MatPaginatorModule,
         MatFormFieldModule,
@@ -27,6 +30,8 @@ import {ReactiveFormsModule} from "@angular/forms";
         MatButtonModule,
         ReactiveFormsModule
     ],
-  entryComponents: [CustomersComponent]
+    providers: [CustomersService],
+    entryComponents: [CustomersComponent]
 })
-export class CustomersModule { }
+export class CustomersModule {
+}
