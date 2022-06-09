@@ -1,30 +1,19 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 export class CustomersService {
-    private customers: CustomerSalesPrediction[] = [
-        {
-            customerName: "Customer AHPOP",
-            empId: 1,
-            lastOrderDate: new Date(2020, 1, 1),
-            nextPredictedOrder: new Date(2020, 2, 1)
-        },
-        {
-            empId: 2,
-            customerName: "Customer AHXHT",
-            lastOrderDate: new Date(2020, 4, 1),
-            nextPredictedOrder: new Date(2020, 5, 5)
-        }
-    ]
 
-    constructor() {
+    constructor(private httpClient: HttpClient) {
     }
 
     getCustomerSalesPredictions(filter: string): Observable<GetCustomerSalesPredictionResponse> {
-        return of({salesDatePrediction: this.customers.filter(t => !filter || t.customerName.toLowerCase().includes(filter.toLowerCase()))})
+        const params = new HttpParams().set('customerName', filter );
+        return this.httpClient.get<GetCustomerSalesPredictionResponse>(`${environment.baseUrl}/order`,{params:params})
     }
 }
 
@@ -33,7 +22,7 @@ export class GetCustomerSalesPredictionResponse {
 }
 
 export class CustomerSalesPrediction {
-    empId: number;
+    custId: number;
     customerName: string;
     lastOrderDate: Date;
     nextPredictedOrder: Date;

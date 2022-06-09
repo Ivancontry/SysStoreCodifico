@@ -30,9 +30,8 @@ export class CustomersComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.searchControl.valueChanges.pipe(distinctUntilChanged(), filter(t => t.length >= 2), debounceTime(300))
+        this.searchControl.valueChanges.pipe(distinctUntilChanged(), filter(t => t.length >= 2 || t.length == 0), debounceTime(500))
             .subscribe(change => {
-                console.log(change);
                 this.applyFilter(change)
             })
     }

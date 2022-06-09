@@ -20,9 +20,10 @@ namespace SysStore.WebApi.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("{customerName}")]
+        [HttpGet]
         public async Task<IActionResult> GetAsync([FromQuery] GetSalesDatePredictionRequest request)
         {
+            request.CustomerName ??= "";
             var response = await _mediator.Send(request);
             return Ok(response);
         }
