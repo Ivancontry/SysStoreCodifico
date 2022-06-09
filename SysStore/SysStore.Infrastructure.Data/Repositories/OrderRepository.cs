@@ -15,7 +15,20 @@ namespace SysStore.Infrastructure.Data.Repositories
 
         }
 
-        public List<SalesDatePredictioDTO> GetSalesDatePrediction(string customerName)
+        public List<OrderForCustomerDTO> GetOrdersForCustomerId(int customerId)
+        {
+            var context = Db as StoreDataContext;
+            string sql = "EXEC GetClientOrders @customerId";
+            List<SqlParameter> parms = new List<SqlParameter>
+            {
+                // Create parameter(s)    
+                new SqlParameter { ParameterName = "@customerId", Value = customerId}
+            };
+            var ordersForCustomerDTO = context.OrdersForCustomerDTO.FromSqlRaw(sql, parms.ToArray()).ToList();
+            return ordersForCustomerDTO;
+        }
+
+        public List<SaleDatePredictioDTO> GetSalesDatePrediction(string customerName)
         {
             var context = Db as StoreDataContext;
             string sql = "EXEC GetSalesDatePrediction @customerName";

@@ -73,20 +73,6 @@ namespace SysStore.WebApi.Infrastructure
             }.ToString());
         }
 
-        //private static Task HandleExceptionAsync(HttpContext context, DomainException exception)
-        //{
-        //    context.Response.ContentType = "application/json";
-        //    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-
-        //    return context.Response.WriteAsync(new ErrorValidation()
-        //    {
-        //        StatusCode = context.Response.StatusCode,
-        //        Message = "Se han presentado algunos errores de validación de reglas de negocio, por favor revíse los datos y vuelva a realizar la operación.",
-        //        StackTrace = exception.StackTrace,
-        //        Errors = exception.Errors
-        //    }.ToString());
-        //}
-
 
     }
 }

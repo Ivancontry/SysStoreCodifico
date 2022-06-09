@@ -21,7 +21,13 @@ namespace SysStore.WebApi.Controllers
         }
 
         [HttpGet("{customerName}")]
-        public async Task<IActionResult> GetAsync([FromQuery] GetSalesDatePredictionRequest request)
+        public async Task<IActionResult> GetSalesDatePredictionAsync([FromQuery] GetSalesDatePredictionRequest request)
+        {
+            var response = await _mediator.Send(request);
+            return Ok(response);
+        }
+        [HttpGet("{custId}")]
+        public async Task<IActionResult> GetOrdersForCustomerIdAsync([FromQuery] GetOrdersForCustomerIdRequest request)
         {
             var response = await _mediator.Send(request);
             return Ok(response);

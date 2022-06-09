@@ -29,9 +29,9 @@ namespace SysStore.Application.Orders
     }
     public class GetSalesDatePredictionResponse
     {
-        public List<SalesDatePredictioDTO> SalesDatePrediction { get; set; }
+        public List<SaleDatePredictioDTO> SalesDatePrediction { get; set; }
 
-        public GetSalesDatePredictionResponse(List<SalesDatePredictioDTO> salesDataPrediction)
+        public GetSalesDatePredictionResponse(List<SaleDatePredictioDTO> salesDataPrediction)
         {
             this.SalesDatePrediction = salesDataPrediction;
         }
