@@ -15,6 +15,14 @@ namespace SysStore.Domain.Entities.Sales.Orders
         public OrderDetail()
         {
 
-        }      
+        }
+
+        public OrderDetail(int productid, int qty, decimal unitprice, decimal discount)
+        {
+            ProductId = productid;
+            Qty = qty;
+            UnitPrice = unitprice;
+            Discount = discount;
+        }
     }
 }

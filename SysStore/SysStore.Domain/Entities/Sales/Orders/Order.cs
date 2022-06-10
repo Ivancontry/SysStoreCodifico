@@ -27,7 +27,7 @@ namespace SysStore.Domain.Entities.Sales.Orders
         public List<OrderDetail> OrderDetails { get; set; }
         private Order()
         {
-
+            OrderDetails = new List<OrderDetail>();
         }
 
         public Order(int empid, int shipperid, string shipName, string shipCity, string shipCountry, DateTime orderDate, DateTime requiredDate, DateTime shippedDate, decimal freight)
@@ -41,11 +41,13 @@ namespace SysStore.Domain.Entities.Sales.Orders
             RequiredDate = requiredDate;
             ShippedDate = shippedDate;
             Freight = freight;
+            OrderDetails = new List<OrderDetail>();
         }
 
         public void AddDetail(int productid, int qty, decimal unitprice, decimal discount)
         {
-            throw new NotImplementedException();
+            var orderDetail = new OrderDetail(productid, qty, unitprice, discount);
+            OrderDetails.Add(orderDetail);
         }
     }
 }
