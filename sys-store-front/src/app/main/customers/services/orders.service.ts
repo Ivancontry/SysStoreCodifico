@@ -1,9 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Observable } from "rxjs";
+import {Observable} from "rxjs";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {BaseService} from "../../../services/base.service";
 import {catchError} from "rxjs/operators";
+import {Employee} from "../models/employee";
+import {Shipper} from "../models/shipper";
+import {Product} from "../models/product";
 
 @Injectable({
     providedIn: 'root'
@@ -22,6 +25,16 @@ export class OrdersService {
         return this.httpClient.post<{message:string}>(`${environment.baseUrl}/${this.baseApi}`,data)
             .pipe(catchError(this.baseService.transformError.bind(this)));
     }
+
+    getFormData(){
+        return this.httpClient.get<GetFormDataResponse>(`${environment.baseUrl}/${this.baseApi}/form-data`)
+    }
+}
+
+export class GetFormDataResponse{
+    employees:Employee[];
+    shippers:Shipper[];
+    products:Product[];
 }
 
 export class GetCustomerSalesPredictionResponse {

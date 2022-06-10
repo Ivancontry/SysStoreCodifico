@@ -3,21 +3,10 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CreateOrderRequest, OrdersService} from "../services/orders.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Employee} from "../models/employee";
+import {Shipper} from "../models/shipper";
+import {Product} from "../models/product";
 
-class Employee {
-    emplId: number;
-    firstName: string;
-}
-
-class Shipper {
-    companyName: string;
-    shipperId: number;
-}
-
-class Product {
-    productId: number;
-    productName: string;
-}
 
 @Component({
     selector: 'app-new-order',
@@ -46,6 +35,11 @@ export class NewOrderComponent implements OnInit {
 
     ngOnInit(): void {
         this.formGroup = this.buildForm();
+        this.orderService.getFormData().subscribe(result => {
+            this.employees = result.employees;
+            this.shippers = result.shippers;
+            this.products = result.products;
+        });
     }
 
     newOrder() {
