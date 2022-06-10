@@ -7,6 +7,7 @@ import {debounceTime, distinctUntilChanged, filter} from "rxjs/operators";
 import {CustomerSalesPrediction, OrdersService} from "./services/orders.service";
 import { MatDialog } from '@angular/material/dialog';
 import {ViewOrdersComponent} from "./view-orders/view-orders.component";
+import {NewOrderComponent} from "./new-order/new-order.component";
 
 @Component({
     selector: 'app-customers',
@@ -50,6 +51,15 @@ export class CustomersComponent implements AfterViewInit {
             panelClass: ['modal-component'],
             width: '70%',
             height: 'auto',
+            data: {
+                customer: customer
+            }
+        });
+    }
+
+    newOrder(customer:CustomerSalesPrediction) {
+        this.matDialog.open(NewOrderComponent, {
+            panelClass: ['modal-component'],
             data: {
                 customer: customer
             }

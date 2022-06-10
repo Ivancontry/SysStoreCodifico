@@ -1,0 +1,58 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+.modal-component {
+    .mat-dialog-container {
+
+        .mat-toolbar {
+            flex: 1 0 auto;
+            min-height: initial;
+            background-color: #43A047;
+            color: white;
+            border-radius: 3px;
+        }
+
+        .toolbar-bottom {
+            height: auto;
+        }
+
+        .mat-dialog-title {
+            margin: 0;
+        }
+
+        .mat-dialog-actions {
+            padding: 0 0 8px 0;
+
+            div {
+                border-radius: 3px;
+            }
+        }
+    }
+
+    .button-close {
+        float: right;
+    }
+
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .mat-form-field {
+        width: 100%;
+    }
+
+    .mat-expansion-panel-body {
+        overflow: auto;
+    }
+
+    div.mat-dialog-actions > button {
+        margin-left: auto;
+        color: #43A047;
+    }
+}

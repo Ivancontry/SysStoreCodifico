@@ -18,10 +18,14 @@ import {CustomersService} from "./services/customers.service";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatDividerModule} from "@angular/material/divider";
+import { NewOrderComponent } from './new-order/new-order.component';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 @NgModule({
-    declarations: [CustomersComponent, ViewOrdersComponent],
+    declarations: [CustomersComponent, ViewOrdersComponent, NewOrderComponent],
     imports: [
         CommonModule,
         HttpClientModule,
@@ -37,6 +41,9 @@ import {MatDividerModule} from "@angular/material/divider";
         MatToolbarModule,
         MatDialogModule,
         MatDividerModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatDatepickerModule,
     ],
     providers: [OrdersService, CustomersService]
 })
