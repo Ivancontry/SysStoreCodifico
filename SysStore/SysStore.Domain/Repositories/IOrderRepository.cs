@@ -9,6 +9,7 @@ namespace SysStore.Domain.Repositories
     {
         public List<SaleDatePredictioDTO> GetSalesDatePrediction(string customerName);
         List<OrderForCustomerDTO> GetOrdersForCustomerId(int customerId);
+        int AddOrderAndDetail(Order order);
     }
 
     public class OrderForCustomerDTO

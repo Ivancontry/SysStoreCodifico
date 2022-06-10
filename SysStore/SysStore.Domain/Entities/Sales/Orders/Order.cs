@@ -29,7 +29,23 @@ namespace SysStore.Domain.Entities.Sales.Orders
         {
 
         }
-        
 
+        public Order(int empid, int shipperid, string shipName, string shipCity, string shipCountry, DateTime orderDate, DateTime requiredDate, DateTime shippedDate, decimal freight)
+        {
+            EmpId = empid;
+            ShipperId = shipperid;
+            Shipname = shipName;
+            ShipCity = shipCity;
+            ShipCountry = shipCountry;
+            OrderDate = orderDate;
+            RequiredDate = requiredDate;
+            ShippedDate = shippedDate;
+            Freight = freight;
+        }
+
+        public void AddDetail(int productid, int qty, decimal unitprice, decimal discount)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

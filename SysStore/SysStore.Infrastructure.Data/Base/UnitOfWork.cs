@@ -14,6 +14,7 @@ namespace SysStore.Infrastructure.Data.Base
         private ICustomerRepository _customerRepository;
         private IOrderRepository _orderRepository;
         private IEmployeRepository _employeRepository;
+        private IShipperRepository _shipperRepository;
 
         public UnitOfWork(IDbContext dbContext)
         {
@@ -53,7 +54,14 @@ namespace SysStore.Infrastructure.Data.Base
             {
                 return _employeRepository ??= new EmployeRepository(_dbContext);
             }
-        }   
+        }
+        public IShipperRepository ShippersRepository
+        {
+            get
+            {
+                return _shipperRepository ??= new ShipperRepository(_dbContext);
+            }
+        }
 
         public Task<int> CommitAsync()
         {

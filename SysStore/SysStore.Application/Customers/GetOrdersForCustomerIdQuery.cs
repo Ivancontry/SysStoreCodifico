@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SysStore.Application.Orders
+namespace SysStore.Application.Customers
 {
     public class GetOrdersForCustomerIdQuery : IRequestHandler<GetOrdersForCustomerIdRequest, GetOrdersForCustomerIdResponse>
     {

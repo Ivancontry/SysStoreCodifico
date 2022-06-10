@@ -11,6 +11,7 @@ namespace SysStore.Domain.Contracts
         public ICustomerRepository CustomerRepository { get; }
         public IOrderRepository OrdersRepository { get; }
         public IEmployeRepository EmployeesRepository { get; }
+        public IShipperRepository ShippersRepository { get; }
         Task<int> CommitAsync();
         int Commit();
     }

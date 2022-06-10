@@ -1,10 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using SysStore.Application.Orders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using SysStore.Application.Customers;
 using System.Threading.Tasks;
 
 namespace SysStore.WebApi.Controllers
