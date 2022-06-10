@@ -14,7 +14,7 @@
                             <mat-label>Employee</mat-label>
                             <mat-select formControlName="empid" required>
                                 <mat-option *ngFor="let employee of employees"
-                                            [value]="employee.emplId">{{employee.firstName}}</mat-option>
+                                            [value]="employee.empId">{{employee.fullName}}</mat-option>
                             </mat-select>
                             <mat-error *ngIf="formGroup.get('empid').hasError('required')">
                                 Required field

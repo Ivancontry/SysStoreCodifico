@@ -1,4 +1,5 @@
 CREATE OR ALTER PROCEDURE AddNewOrder 
+	@custid int,
 	@empid int,
 	@shipperid int,
 	@shipName nvarchar(40),
@@ -9,14 +10,15 @@ CREATE OR ALTER PROCEDURE AddNewOrder
 	@shippedDate datetime,
 	@freigth money,
 	@shipCountry nvarchar(15),
-	@unitPrice decimal,
-	@qty int,
-	@discount int,
+	@unitPrice money,
+	@qty smallint,
+	@discount numeric,
 	@productId int 
 AS BEGIN 
 	DECLARE @OrderID int;
 	INSERT INTO
 		StoreSample.Sales.Orders(
+			custid,
 			empid,
 			shipperid,
 			shipname,
@@ -30,6 +32,7 @@ AS BEGIN
 		)
 	VALUES
 		(
+			@custid,
 			@empid,
 			@shipperid,
 			@shipName,

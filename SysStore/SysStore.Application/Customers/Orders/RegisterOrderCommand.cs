@@ -21,10 +21,11 @@ namespace SysStore.Application.Customers.Orders
         }
         public Task<RegisterOrderResponse> Handle(RegisterOrderRequest request, CancellationToken cancellationToken)
         {
-            var order = new Order(  
+            var order = new Order(  request.Custid,
                                     request.Empid,
                                     request.Shipperid,
                                     request.ShipName,
+                                    request.ShipAddress,
                                     request.ShipCity,
                                     request.ShipCountry,
                                     request.OrderDate,
@@ -50,6 +51,7 @@ namespace SysStore.Application.Customers.Orders
         public DateTime ShippedDate { get; set; }
         public decimal Freight { get; set; }
         public OrderDetailRequest Detail { get; set; }
+        public int Custid { get; set; }
     }
     public class RegisterOrderResponse
     {

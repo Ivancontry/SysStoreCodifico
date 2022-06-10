@@ -17,7 +17,7 @@ namespace SysStore.Infrastructure.Data.Repositories
         public List<GetShipperDTO> GetShippers()
         {
             var context = Db as StoreDataContext;
-            string sql = "EXEC Shippers";
+            var sql = "EXEC GetShippers";
             var getShippersDTO = context.GetShippersDTO.FromSqlRaw(sql).ToList();
             return getShippersDTO;
         }

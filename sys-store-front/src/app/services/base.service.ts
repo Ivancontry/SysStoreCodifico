@@ -13,12 +13,23 @@ export class BaseService {
     constructor(private dialog: MatDialog) {
     }
 
-    public transformError(error: HttpErrorResponse | string) {
+    public transformError(error: HttpErrorResponse | string,dialog:MatDialog) {
         this.responseStatus = new ResponseStatus();
+        const showError = (response: ResponseStatus): void => {
+            if (response.errors || response.title) {
+
+                dialog.open(ShowErrorMessageComponent, {
+                    panelClass: 'modal-response',
+                    width: '30%',
+                    data: response
+                });
+
+            }
+        };
         if (typeof error === 'string') {
             this.responseStatus.title = error;
             this.responseStatus.classAlert = 'accent';
-            this.showError(this.responseStatus);
+            showError(this.responseStatus);
             return throwError(this.responseStatus);
         }
         if (!(error instanceof HttpErrorResponse)) {
@@ -36,30 +47,19 @@ export class BaseService {
                     this.responseStatus.errors.push(element.ErrorMessage);
                 });
             }
-            this.showError(this.responseStatus);
+            showError(this.responseStatus);
             return throwError(this.responseStatus);
         }
         this.responseStatus.classAlert = 'warn';
 
         if (error.status === 500) {
             this.responseStatus.title = error.error.Message;
-            this.showError(this.responseStatus);
+            showError(this.responseStatus);
         }
 
         return throwError(this.responseStatus);
     }
 
-    private showError(response: ResponseStatus): void {
-        if (response.errors || response.title) {
-
-            this.dialog.open(ShowErrorMessageComponent, {
-                panelClass: 'modal-response',
-                width: '30%',
-                data: response
-            });
-
-        }
-    }
 }
 export class ResponseStatus {
     constructor(public title?: string, public errors?: string[], public classAlert?: string) { }

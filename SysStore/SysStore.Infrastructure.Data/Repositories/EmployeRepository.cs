@@ -17,7 +17,7 @@ namespace SysStore.Infrastructure.Data.Repositories
         public List<GetEmployeeDTO> GetEmployees()
         {
             var context = Db as StoreDataContext;
-            string sql = "EXEC GetEmployees";
+            var sql = "EXEC GetEmployees";
             var getEmployeesDTO = context.GetEmployeesDTO.FromSqlRaw(sql).ToList();
             return getEmployeesDTO;
         }

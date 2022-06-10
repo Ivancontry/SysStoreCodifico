@@ -7,13 +7,14 @@ import {catchError} from "rxjs/operators";
 import {Employee} from "../models/employee";
 import {Shipper} from "../models/shipper";
 import {Product} from "../models/product";
+import {MatDialog} from "@angular/material/dialog";
 
 @Injectable({
     providedIn: 'root'
 })
 export class OrdersService {
     private readonly baseApi:string = "api/orders";
-    constructor(private httpClient: HttpClient,private baseService:BaseService) {
+    constructor(private httpClient: HttpClient,private baseService:BaseService, private matDialog:MatDialog) {
     }
 
     getCustomerSalesPredictions(filter: string): Observable<GetCustomerSalesPredictionResponse> {
@@ -23,7 +24,7 @@ export class OrdersService {
 
     createOrder(data: CreateOrderRequest) {
         return this.httpClient.post<{message:string}>(`${environment.baseUrl}/${this.baseApi}`,data)
-            .pipe(catchError(this.baseService.transformError.bind(this)));
+            .pipe(catchError(this.baseService.transformError.bind(this,this.matDialog)));
     }
 
     getFormData(){

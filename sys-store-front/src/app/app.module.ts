@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatNativeDateModule} from "@angular/material/core";
 import {BaseService} from "./services/base.service";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
     declarations: [
@@ -16,7 +17,7 @@ import {MatDialogModule} from "@angular/material/dialog";
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MatNativeDateModule,MatDialogModule
+        MatNativeDateModule, MatDialogModule, MatToolbarModule
     ],
     providers: [BaseService],
     bootstrap: [AppComponent]

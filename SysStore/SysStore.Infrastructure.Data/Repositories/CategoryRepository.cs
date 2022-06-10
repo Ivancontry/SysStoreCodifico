@@ -25,7 +25,7 @@ namespace SysStore.Infrastructure.Data.Repositories
         public List<GetProductDTO> GetProducts()
         {
             var context = Db as StoreDataContext;
-            string sql = "EXEC GetProducts";           
+            const string sql = "EXEC GetProducts";           
             var getProductsDTO = context.GetProductsDTO.FromSqlRaw(sql).ToList();
             return getProductsDTO;
         }

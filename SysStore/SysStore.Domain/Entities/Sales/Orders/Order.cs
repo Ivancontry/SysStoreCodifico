@@ -10,9 +10,7 @@ namespace SysStore.Domain.Entities.Sales.Orders
     {
         public int OrderId { get; set; }
         public int CustId { get; set; }
-        public Customer Client { get; set; }
         public int EmpId { get; set; }
-        public Employee Employe { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime RequiredDate { get; set; }
         public DateTime ShippedDate { get; set; }
@@ -21,8 +19,6 @@ namespace SysStore.Domain.Entities.Sales.Orders
         public string Shipname { get; set; }
         public string ShipAddress { get; set; }
         public string ShipCity { get; set; }
-        public string ShipRegion { get; set; }
-        public string ShipPostalCode { get; set; }
         public string ShipCountry { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
         private Order()
@@ -30,11 +26,13 @@ namespace SysStore.Domain.Entities.Sales.Orders
             OrderDetails = new List<OrderDetail>();
         }
 
-        public Order(int empid, int shipperid, string shipName, string shipCity, string shipCountry, DateTime orderDate, DateTime requiredDate, DateTime shippedDate, decimal freight)
+        public Order(int custId,int empid, int shipperid, string shipName, string shipAddress, string shipCity, string shipCountry, DateTime orderDate, DateTime requiredDate, DateTime shippedDate, decimal freight)
         {
+            CustId = custId;
             EmpId = empid;
             ShipperId = shipperid;
             Shipname = shipName;
+            ShipAddress = shipAddress;
             ShipCity = shipCity;
             ShipCountry = shipCountry;
             OrderDate = orderDate;

@@ -40,7 +40,7 @@ namespace SysStore.Infrastructure.Data.Repositories
         }
         public IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
-            IEnumerable<T> query = Dbset.Where(predicate).AsEnumerable();
+            var query = Dbset.Where(predicate).AsEnumerable();
             return query;
         }
         public virtual IQueryable<T> FindBy(
