@@ -22,7 +22,6 @@ namespace SysStore.WebApi.Controllers
             return Ok(response);
         }
 
-
         [HttpGet]
         public async Task<IActionResult> GetAsync([FromQuery] GetSalesDatePredictionRequest request)
         {
