@@ -14,11 +14,19 @@ namespace SysStore.WebApi.Controllers
         public OrdersController(IMediator mediator)
         {
             _mediator = mediator;
-        }       
-        
+        }
+
         [HttpPost]
-        public async Task<IActionResult> PostAddOrderAsync(RegisterOrderRequest request)
+        public async Task<IActionResult> PostAddOrderAsync(RegisterOrderRequest request) {
+            var response = await _mediator.Send(request);
+            return Ok(response);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAsync([FromQuery] GetSalesDatePredictionRequest request)
         {
+            request.CustomerName ??= "";
             var response = await _mediator.Send(request);
             return Ok(response);
         }

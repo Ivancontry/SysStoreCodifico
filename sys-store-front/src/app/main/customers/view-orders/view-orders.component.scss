@@ -1,0 +1,43 @@
+.modal-component {
+    .mat-dialog-container {
+
+        .mat-toolbar {
+            flex: 1 0 auto;
+            min-height: initial;
+            background-color: #C62828;
+            border-radius: 3px;
+        }
+
+        .toolbar-bottom {
+            height: auto;
+        }
+
+        .mat-dialog-title {
+            margin: 0;
+        }
+
+        .mat-dialog-actions {
+            padding: 0 0 8px 0;
+            div{
+                border-radius: 3px;
+            }
+        }
+    }
+    .button-close{
+        float: right;
+    }
+
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mat-expansion-panel-body {
+        overflow: auto;
+    }
+
+    table {
+        width: 100%
+    }
+}

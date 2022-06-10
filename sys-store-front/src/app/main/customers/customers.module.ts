@@ -12,11 +12,20 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {CustomersService} from "./customers.service";
+import {ViewOrdersComponent} from './view-orders/view-orders.component';
+import {OrdersService} from "./services/orders.service";
+import {CustomersService} from "./services/customers.service";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatDividerModule} from "@angular/material/divider";
+import { NewOrderComponent } from './new-order/new-order.component';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 @NgModule({
-    declarations: [CustomersComponent],
+    declarations: [CustomersComponent, ViewOrdersComponent, NewOrderComponent],
     imports: [
         CommonModule,
         HttpClientModule,
@@ -28,10 +37,15 @@ import {CustomersService} from "./customers.service";
         MatSortModule,
         MatIconModule,
         MatButtonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatDialogModule,
+        MatDividerModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatDatepickerModule,
     ],
-    providers: [CustomersService],
-    entryComponents: [CustomersComponent]
+    providers: [OrdersService, CustomersService]
 })
 export class CustomersModule {
 }

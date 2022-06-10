@@ -1,17 +1,27 @@
+@import "~@angular/material/theming";
+
 td button + button {
     padding-right: 10px;
 }
+
 table {
     width: 100%;
 }
-.table-up-header{
+
+.table-up-header {
     padding: 10px;
     width: calc(100% - 10px);
-    h2{
+
+    h2 {
         display: inline-block;
         width: calc(40% - 5px);
     }
-    mat-form-field{
+
+    mat-form-field {
         width: calc(60% - 5px);
     }
+}
+
+.green {
+    color: mat-color($mat-green);
 }

@@ -29,11 +29,11 @@ namespace SysStore.Application.Customers
     }
     public class GetOrdersForCustomerIdResponse
     {
-        public List<OrderForCustomerDTO> OrdersForCustomerDTO { get; set; }
+        public List<OrderForCustomerDTO> OrdersForCustomer { get; set; }
 
-        public GetOrdersForCustomerIdResponse(List<OrderForCustomerDTO> ordersForCustomerDTO)
+        public GetOrdersForCustomerIdResponse(List<OrderForCustomerDTO> ordersForCustomer)
         {
-            this.OrdersForCustomerDTO = ordersForCustomerDTO;
+            this.OrdersForCustomer = ordersForCustomer;
         }
     }
 }
