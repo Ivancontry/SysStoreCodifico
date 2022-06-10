@@ -1,0 +1,23 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar matDialogTitle [color]="data.classAlert">
+        <mat-toolbar-row >
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content>
+        <h5>{{data.title}}</h5>
+        <h6>Description:</h6>
+        <ol *ngIf="data.errors" style="text-align: left;">
+            <li *ngFor="let err of data.errors"><span class="text-muted">{{ err }}</span></li>
+        </ol>
+    </div>
+
+    <div mat-dialog-actions >
+        <button mat-button class="save-button" (click)="matDialogRef.close()" aria-label="OK">
+            Ok
+        </button>
+    </div>
+</div>

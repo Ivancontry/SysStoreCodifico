@@ -1,22 +1,12 @@
 import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {CustomersService} from "../services/customers.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {CreateOrderRequest, OrdersService} from "../services/orders.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Employee} from "../models/employee";
+import {Shipper} from "../models/shipper";
+import {Product} from "../models/product";
 
-class Employee {
-    emplId: number;
-    firstName: string;
-}
-
-class Shipper {
-    companyName: string;
-    shipperId: number;
-}
-
-class Product {
-    productId: number;
-    productName: string;
-}
 
 @Component({
     selector: 'app-new-order',
@@ -35,8 +25,9 @@ export class NewOrderComponent implements OnInit {
     constructor(
         public matDialogRef: MatDialogRef<NewOrderComponent>,
         @Inject(MAT_DIALOG_DATA) _data: any,
-        private customersService: CustomersService,
-        private formBuilder:FormBuilder
+        private formBuilder:FormBuilder,
+        private orderService:OrdersService,
+        private matSnackBar:MatSnackBar
     ) {
         this.custId = +_data.customer.custId;
         this.modalTitle = `${_data.customer.customerName} - New Order`;
@@ -44,10 +35,19 @@ export class NewOrderComponent implements OnInit {
 
     ngOnInit(): void {
         this.formGroup = this.buildForm();
+        this.orderService.getFormData().subscribe(result => {
+            this.employees = result.employees;
+            this.shippers = result.shippers;
+            this.products = result.products;
+        });
     }
 
     newOrder() {
-
+        const data:CreateOrderRequest = this.formGroup.getRawValue();
+        this.orderService.createOrder(data).subscribe(result=> {
+          if (!result) return;
+          this.matSnackBar.open(result.message,'Create Order',{duration: 3000});
+        })
     }
 
     private buildForm() {

@@ -22,6 +22,7 @@ import { NewOrderComponent } from './new-order/new-order.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
         MatOptionModule,
         MatSelectModule,
         MatDatepickerModule,
+        MatSnackBarModule
     ],
     providers: [OrdersService, CustomersService]
 })
