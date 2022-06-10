@@ -20,13 +20,18 @@ namespace SysStore.Infrastructure.Data
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<SaleDatePredictioDTO> SalesDatePredictioDTO { get; set; }
         public DbSet<OrderForCustomerDTO> OrdersForCustomerDTO { get; set; }
+        public DbSet<GetProductDTO> GetProductsDTO { get; set; }
+        public DbSet<GetShipperDTO> GetShippersDTO { get; set; }
+        public DbSet<GetEmployeeDTO> GetEmployeesDTO { get; set; }
         public static string SchemaHR => "HR";
         public static string SchemaSales => "Sales";
-        public static string SchemaProduction => "Production";
+        public static string SchemaProduction => "Production";        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SaleDatePredictioDTO>().HasNoKey();
             modelBuilder.Entity<OrderForCustomerDTO>().HasNoKey();
+            modelBuilder.Entity<GetProductDTO>().HasNoKey();
             modelBuilder.ApplyConfiguration(new EmployeEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ProductEntityTypeConfiguration());

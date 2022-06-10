@@ -2,6 +2,7 @@
 using SysStore.Domain.Entities.Categorys;
 using SysStore.Domain.Repositories;
 using SysStore.Infrastructure.Data.Base;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SysStore.Infrastructure.Data.Repositories
@@ -17,8 +18,16 @@ namespace SysStore.Infrastructure.Data.Repositories
         {
             var context = Db as StoreDataContext;
             var product = context.Products.Include(p => p.Category)
-                                          .FirstOrDefault(t => t.Id == productId);
+                                          .FirstOrDefault(t => t.Productid == productId);
             return product;
+        }
+
+        public List<GetProductDTO> GetProducts()
+        {
+            var context = Db as StoreDataContext;
+            string sql = "EXEC GetProducts";           
+            var getProductsDTO = context.GetProductsDTO.FromSqlRaw(sql).ToList();
+            return getProductsDTO;
         }
     }
 }

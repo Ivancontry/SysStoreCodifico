@@ -12,7 +12,7 @@ namespace SysStore.Domain.Entities.Sales.Orders
         public int CustId { get; set; }
         public Customer Client { get; set; }
         public int EmpId { get; set; }
-        public Employe Employe { get; set; }
+        public Employee Employe { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime RequiredDate { get; set; }
         public DateTime ShippedDate { get; set; }

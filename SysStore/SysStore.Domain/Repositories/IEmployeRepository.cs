@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 
 namespace SysStore.Domain.Repositories
 {
-    public interface IEmployeRepository : IGenericRepository<Employe>
+    public interface IEmployeRepository : IGenericRepository<Employee>
     {
-        
+        List<GetEmployeeDTO> GetEmployees();
+    }
+    public class GetEmployeeDTO
+    {
+        public int EmpId{get;set;}
+        public string FullName { get; set; }
     }
 }

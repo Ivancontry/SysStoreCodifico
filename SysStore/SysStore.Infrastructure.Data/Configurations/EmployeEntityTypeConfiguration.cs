@@ -4,9 +4,9 @@ using SysStore.Domain.Entities.Employees;
 
 namespace SysStore.Infrastructure.Data.Configurations
 {
-    public class EmployeEntityTypeConfiguration : IEntityTypeConfiguration<Employe>
+    public class EmployeEntityTypeConfiguration : IEntityTypeConfiguration<Employee>
     {
-        public void Configure(EntityTypeBuilder<Employe> builder)
+        public void Configure(EntityTypeBuilder<Employee> builder)
         {
             builder.ToTable("Employees",StoreDataContext.SchemaSales);
             builder.HasKey(t => t.EmplId);

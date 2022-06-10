@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SysStore.Domain.Entities.Employees
 {
-    public class Employe : BaseEntity
+    public class Employee : BaseEntity
     {
         public int EmplId { get; set; }
         public string LastName { get; set; }
@@ -24,7 +24,7 @@ namespace SysStore.Domain.Entities.Employees
         public string Phone { get; set; }
         public int Mgrid { get; set; }
 
-        public Employe()
+        public Employee()
         {
 
         }

@@ -29,6 +29,12 @@ namespace SysStore.WebApi.Controllers
             var response = await _mediator.Send(request);
             return Ok(response);
         }
+        [HttpGet("form-data")]
+        public async Task<IActionResult> GetAsync()
+        {
+            var response = await _mediator.Send(new GetDataFormRequest());
+            return Ok(response);
+        }
 
     }
 }
