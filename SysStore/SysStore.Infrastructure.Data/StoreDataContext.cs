@@ -32,6 +32,8 @@ namespace SysStore.Infrastructure.Data
             modelBuilder.Entity<SaleDatePredictioDTO>().HasNoKey();
             modelBuilder.Entity<OrderForCustomerDTO>().HasNoKey();
             modelBuilder.Entity<GetProductDTO>().HasNoKey();
+            modelBuilder.Entity<GetShipperDTO>().HasNoKey();
+            modelBuilder.Entity<GetEmployeeDTO>().HasNoKey();
             modelBuilder.ApplyConfiguration(new EmployeEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ProductEntityTypeConfiguration());
