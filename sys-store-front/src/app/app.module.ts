@@ -5,18 +5,20 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatNativeDateModule} from "@angular/material/core";
+import {BaseService} from "./services/base.service";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MatNativeDateModule
+        MatNativeDateModule,MatDialogModule
     ],
-    providers: [],
+    providers: [BaseService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

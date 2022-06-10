@@ -16,6 +16,7 @@ class GetOrdersResponse {
     ordersForCustomer: OrderForCustomer[]
 }
 
+
 @Injectable({
     providedIn: 'root'
 })
@@ -28,5 +29,6 @@ export class CustomersService {
     getOrders(custId: number): Observable<GetOrdersResponse> {
         return this.httpClient.get<GetOrdersResponse>(`${environment.baseUrl}/${this.baseApi}/${custId}/orders`)
     }
+
 }
 

@@ -1,7 +1,8 @@
 import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {CustomersService} from "../services/customers.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {CreateOrderRequest, OrdersService} from "../services/orders.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 class Employee {
     emplId: number;
@@ -35,8 +36,9 @@ export class NewOrderComponent implements OnInit {
     constructor(
         public matDialogRef: MatDialogRef<NewOrderComponent>,
         @Inject(MAT_DIALOG_DATA) _data: any,
-        private customersService: CustomersService,
-        private formBuilder:FormBuilder
+        private formBuilder:FormBuilder,
+        private orderService:OrdersService,
+        private matSnackBar:MatSnackBar
     ) {
         this.custId = +_data.customer.custId;
         this.modalTitle = `${_data.customer.customerName} - New Order`;
@@ -47,7 +49,11 @@ export class NewOrderComponent implements OnInit {
     }
 
     newOrder() {
-
+        const data:CreateOrderRequest = this.formGroup.getRawValue();
+        this.orderService.createOrder(data).subscribe(result=> {
+          if (!result) return;
+          this.matSnackBar.open(result.message,'Create Order',{duration: 3000});
+        })
     }
 
     private buildForm() {
