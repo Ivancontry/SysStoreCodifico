@@ -7,7 +7,7 @@ namespace SysStore.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.ToTable("Categories",StoreDataContext.SchemaSales);
+            builder.ToTable("Categories",StoreDataContext.SchemaProduction);
             builder.HasKey(t => t.Categoryid);
         }
     }

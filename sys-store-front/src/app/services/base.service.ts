@@ -23,7 +23,6 @@ export class BaseService {
                     width: '30%',
                     data: response
                 });
-
             }
         };
         if (typeof error === 'string') {

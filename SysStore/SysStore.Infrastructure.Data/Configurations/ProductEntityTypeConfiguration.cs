@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SysStore.Domain.Entities.Categorys;
 using SysStore.Infrastructure.Data.Base;
 namespace SysStore.Infrastructure.Data.Configurations
 {
-    public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Domain.Entities.Categorys.Product>
+    public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
     {
-        public void Configure(EntityTypeBuilder<Domain.Entities.Categorys.Product> builder)
+        public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.ToTable("Products", StoreDataContext.SchemaSales);
+            builder.ToTable("Products", StoreDataContext.SchemaProduction);
             builder.HasKey(t => t.Productid);
 
             builder.HasOne(t => t.Category)

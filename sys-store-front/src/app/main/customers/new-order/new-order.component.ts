@@ -47,6 +47,7 @@ export class NewOrderComponent implements OnInit {
         this.orderService.createOrder(data).subscribe(result=> {
           if (!result) return;
           this.matSnackBar.open(result.message,'Create Order',{duration: 3000});
+          this.matDialogRef.close();
         })
     }
 
@@ -67,8 +68,9 @@ export class NewOrderComponent implements OnInit {
                 'productid':["",[Validators.required]],
                 'unitprice':["",[Validators.required]],
                 'qty':["",[Validators.required]],
-                'discount':["",[Validators.required]],
+                'discount':["",[Validators.required,Validators.pattern("^[0]([.,][0-9]{1,3})?$")]],
             })
         });
     }
+
 }

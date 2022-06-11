@@ -24,7 +24,6 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 
-
 @NgModule({
     declarations: [CustomersComponent, ViewOrdersComponent, NewOrderComponent],
     imports: [
@@ -45,9 +44,13 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
         MatOptionModule,
         MatSelectModule,
         MatDatepickerModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+
     ],
-    providers: [OrdersService, CustomersService]
+    providers: [
+        OrdersService,
+        CustomersService
+    ]
 })
 export class CustomersModule {
 }

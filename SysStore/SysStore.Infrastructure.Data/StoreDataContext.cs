@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SysStore.Domain.Entities.Categorys;
+using SysStore.Domain.Entities.Employees;
 using SysStore.Domain.Entities.Sales.Customers;
 using SysStore.Domain.Entities.Sales.Orders;
 using SysStore.Domain.Repositories;
@@ -18,6 +19,7 @@ namespace SysStore.Infrastructure.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<SaleDatePredictioDTO> SalesDatePredictioDTO { get; set; }
         public DbSet<OrderForCustomerDTO> OrdersForCustomerDTO { get; set; }
         public DbSet<GetProductDTO> GetProductsDTO { get; set; }

@@ -9,7 +9,7 @@ namespace SysStore.Domain.Entities.Employees
 {
     public class Employee : BaseEntity
     {
-        public int EmplId { get; set; }
+        public int EmpId { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Title { get; set; }
@@ -18,11 +18,11 @@ namespace SysStore.Domain.Entities.Employees
         public DateTime HireDate { get; set; }
         public string Address {get;set;}
         public string City { get; set; }
-        public string Region { get; set; }
+        public string? Region { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public string Phone { get; set; }
-        public int Mgrid { get; set; }
+        public int? Mgrid { get; set; }
 
         public Employee()
         {

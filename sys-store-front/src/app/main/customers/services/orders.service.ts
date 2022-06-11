@@ -24,7 +24,7 @@ export class OrdersService {
 
     createOrder(data: CreateOrderRequest) {
         return this.httpClient.post<{message:string}>(`${environment.baseUrl}/${this.baseApi}`,data)
-            .pipe(catchError(this.baseService.transformError.bind(this,this.matDialog)));
+            .pipe(catchError(t=> this.baseService.transformError(t,this.matDialog)));
     }
 
     getFormData(){

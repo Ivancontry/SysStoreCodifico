@@ -5,7 +5,7 @@ namespace SysStore.Domain.Entities.Categorys
 {
     public class Category: BaseEntity
     {        
-        public long Categoryid { get; set; }
+        public int Categoryid { get; set; }
         public string CategoryName { get; set; }
         public string Description { get; set; }
         public List<Product> Products { get; set; }

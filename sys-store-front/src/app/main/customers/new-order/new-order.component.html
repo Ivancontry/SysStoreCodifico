@@ -125,7 +125,7 @@
             <mat-form-field class="example-full-width" appearance="standard">
                 <mat-label>Freight</mat-label>
                 <span matPrefix>$</span>
-                <input matInput required formControlName="freight" autocomplete="off">
+                <input matInput required type="number" formControlName="freight" autocomplete="off">
                 <mat-error *ngIf="formGroup.get('freight').hasError('required')">
                     Required field
                 </mat-error>
@@ -148,7 +148,7 @@
                         <td>
                             <mat-form-field class="example-full-width" appearance="standard">
                                 <mat-label>Unit Price</mat-label>
-                                <input matInput required currencyMask formControlName="unitprice" autocomplete="off">
+                                <input matInput required currencyMask type="number" formControlName="unitprice" autocomplete="off">
                                 <mat-error *ngIf="formGroup.get('detail.unitprice').hasError('required')">
                                     Required field
                                 </mat-error>
@@ -157,7 +157,7 @@
                         <td>
                             <mat-form-field class="example-full-width" appearance="standard">
                                 <mat-label>Quantity</mat-label>
-                                <input matInput required currencyMask formControlName="qty" autocomplete="off">
+                                <input matInput required currencyMask type="number" formControlName="qty" autocomplete="off">
                                 <mat-error *ngIf="formGroup.get('detail.qty').hasError('required')">
                                     Required field
                                 </mat-error>
@@ -166,9 +166,12 @@
                         <td>
                             <mat-form-field class="example-full-width" appearance="standard">
                                 <mat-label>Discount</mat-label>
-                                <input matInput required currencyMask formControlName="discount" autocomplete="off">
+                                <input matInput required currencyMask type="number" formControlName="discount" autocomplete="off">
                                 <mat-error *ngIf="formGroup.get('detail.discount').hasError('required')">
                                     Required field
+                                </mat-error>
+                                <mat-error *ngIf="formGroup.get('detail.discount').hasError('pattern')">
+                                    Format invalid => example 0.000, 0.500
                                 </mat-error>
                             </mat-form-field>
                         </td>
@@ -178,11 +181,16 @@
         </form>
     </div>
     <div mat-dialog-actions>
-        <button class="button-close" mat-button color="warn" (click)="matDialogRef.close()"
+        <button
+                class="button-close" mat-button color="warn"
+                (click)="matDialogRef.close() "
                 aria-label="Close dialog">
             CLOSE
         </button>
-        <button class="button-close green" mat-button (click)="newOrder()"
+        <button
+                [disabled]="formGroup.invalid"
+                class="button-close green"
+                mat-button (click)="newOrder() "
                 aria-label="Close dialog">
             SAVE
         </button>
